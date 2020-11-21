@@ -1,6 +1,7 @@
-<div class="titleDesign">
-  Register
-</div>
+<div style="text-align: center" >
+
+  <p class="titleDesignRegister">Register form</p>
+
 
 <form [formGroup]="hospitalCreateForm">
 
@@ -15,6 +16,9 @@
   <app-input [keyword]="'EMAIL'" [type]="'text'" [for]="'email'" formControlName="email"></app-input>
   <app-input [keyword]="'PASSWORD'" [type]="'password'" [for]="'email'" formControlName="password"></app-input>
 
-  <app-button [keyword]="'REGISTER'" (click)="submitForm()"></app-button>
+<div style="text-align: center; padding-top: 2%">
+  <app-button class="submitButtonAlignment" [keyword]="'REGISTER'" (click)="submitForm()"></app-button>
+</div>
 
 </form>
+</div>
