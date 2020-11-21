@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AuthService {
   loggedUser: Hospital;
 
-  constructor(public auth: AngularFireAuth, private fireService: FirebaseService) {
+  constructor(public auth: AngularFireAuth) {
   }
 
   getUser() {
@@ -25,7 +25,7 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       this.auth.signInWithEmailAndPassword(email, password)
         .then((result) => {
-          resolve(result);
+          resolve(result.user.uid);
         }).catch((error) => {
         reject(error);
       });

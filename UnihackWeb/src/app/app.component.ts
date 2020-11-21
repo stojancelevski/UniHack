@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, DoCheck {
-  title = 'web';
+  title = 'Bloodnation';
   uid: string;
 
   constructor(private translate: TranslateService, private router: Router) {

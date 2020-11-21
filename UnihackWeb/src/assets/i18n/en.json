@@ -9,5 +9,10 @@
   "COUNTRY" : "Country",
   "LOGIN": "Login",
   "LOGOUT": "Logout",
-  "REGISTER": "Register"
+  "REGISTER": "Register",
+  "TITLE": "Title",
+  "DETAILS": "Details",
+  "DATE": "Choose a date",
+  "LOCATION": "Address",
+  "IMAGE": "Choose Image"
 }

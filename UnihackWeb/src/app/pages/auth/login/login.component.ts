@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   submitForm() {
     this.authService.SignIn(this.form.email.value, this.form.password.value).then(value => {
-      this.getCurrentUser(value.user.uid).then(hospital => {
+      this.getCurrentUser(value).then(hospital => {
         this.authService.setUser(hospital);
         window.localStorage.setItem('user', hospital.uid);
         this.router.navigateByUrl('/home').then(() => {

@@ -13,6 +13,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PreloadService } from './services/preload/preload.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,12 @@ import { PreloadService } from './services/preload/preload.service';
     HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule,
   ],
   providers: [
     AngularFireDatabase,
     AngularFireAuth,
+    DatePipe,
     {provide: APP_INITIALIZER, useFactory: preloadServiceFactory, deps: [PreloadService], multi: true}
   ],
   bootstrap: [AppComponent]
