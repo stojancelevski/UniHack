@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService, Message } from '../services/data.service';
+import { DataService, Event } from '../services/data.service';
 
 @Component({
-  selector: 'app-view-message',
-  templateUrl: './view-message.page.html',
-  styleUrls: ['./view-message.page.scss'],
+  selector: 'app-event-details',
+  templateUrl: './event-details.page.html',
+  styleUrls: ['./event-details.page.scss'],
 })
-export class ViewMessagePage implements OnInit {
-  public message: Message;
+export class EventDetailsPage implements OnInit {
+  public event: Event;
 
   constructor(
     private data: DataService,
@@ -17,7 +17,7 @@ export class ViewMessagePage implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.message = this.data.getMessageById(parseInt(id, 10));
+    this.event = this.data.getEventBy(parseInt(id, 10));
   }
 
   getBackButtonText() {

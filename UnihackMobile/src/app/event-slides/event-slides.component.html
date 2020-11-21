@@ -1,0 +1,10 @@
+
+<ion-card>
+  <ion-label *ngIf="event" [routerLink]="'/event/' + event.id" [detail]="false">
+    <ion-card style="height: 100px">
+      Map Placeholder
+    </ion-card>
+    <ion-item >{{ event.title }}</ion-item>
+    {{ event.date }}
+  </ion-label>
+</ion-card>
