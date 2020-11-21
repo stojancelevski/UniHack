@@ -1,83 +1,68 @@
 import { Injectable } from '@angular/core';
 
-export interface Message {
-  fromName: string;
-  subject: string;
+export interface Event {
+  title: string;
+  details: string;
   date: string;
   id: number;
-  read: boolean;
+  location: string;
+  bloodType: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  public messages: Message[] = [
+  public events: Event[] = [
     {
-      fromName: 'Matt Chorsey',
-      subject: 'New event: Trip to Vegas',
-      date: '9:32 AM',
+      title: "Blood Drive 1",
+      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus et felis et semper. Phasellus congue id elit ac interdum. Donec commodo maximus luctus. Aliquam finibus enim in neque lacinia, eget consectetur tortor fermentum. Curabitur aliquam egestas ipsum, a feugiat leo tincidunt at. Nunc placerat metus sit amet pharetra cursus. Curabitur nec enim lacus. Ut rutrum quam vel nisl ultricies semper.",
+      date: Date(),
       id: 0,
-      read: false
+      location: "Some Address",
+      bloodType: "A+"
     },
     {
-      fromName: 'Lauren Ruthford',
-      subject: 'Long time no chat',
-      date: '6:12 AM',
+      title: "Blood Drive 2",
+      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus et felis et semper. Phasellus congue id elit ac interdum. Donec commodo maximus luctus. Aliquam finibus enim in neque lacinia, eget consectetur tortor fermentum. Curabitur aliquam egestas ipsum, a feugiat leo tincidunt at. Nunc placerat metus sit amet pharetra cursus. Curabitur nec enim lacus. Ut rutrum quam vel nisl ultricies semper.",
+      date: Date(),
       id: 1,
-      read: false
+      location: "Some Address",
+      bloodType: "A-"
     },
     {
-      fromName: 'Jordan Firth',
-      subject: 'Report Results',
-      date: '4:55 AM',
+      title: "Blood Drive 3",
+      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus et felis et semper. Phasellus congue id elit ac interdum. Donec commodo maximus luctus. Aliquam finibus enim in neque lacinia, eget consectetur tortor fermentum. Curabitur aliquam egestas ipsum, a feugiat leo tincidunt at. Nunc placerat metus sit amet pharetra cursus. Curabitur nec enim lacus. Ut rutrum quam vel nisl ultricies semper.",
+      date: Date(),
       id: 2,
-      read: false
+      location: "Some Address",
+      bloodType: "B+"
     },
     {
-      fromName: 'Bill Thomas',
-      subject: 'The situation',
-      date: 'Yesterday',
+      title: "Blood Drive 3",
+      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus et felis et semper. Phasellus congue id elit ac interdum. Donec commodo maximus luctus. Aliquam finibus enim in neque lacinia, eget consectetur tortor fermentum. Curabitur aliquam egestas ipsum, a feugiat leo tincidunt at. Nunc placerat metus sit amet pharetra cursus. Curabitur nec enim lacus. Ut rutrum quam vel nisl ultricies semper.",
+      date: Date(),
       id: 3,
-      read: false
+      location: "Some Address",
+      bloodType: "B+"
     },
     {
-      fromName: 'Joanne Pollan',
-      subject: 'Updated invitation: Swim lessons',
-      date: 'Yesterday',
+      title: "Blood Drive 3",
+      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus et felis et semper. Phasellus congue id elit ac interdum. Donec commodo maximus luctus. Aliquam finibus enim in neque lacinia, eget consectetur tortor fermentum. Curabitur aliquam egestas ipsum, a feugiat leo tincidunt at. Nunc placerat metus sit amet pharetra cursus. Curabitur nec enim lacus. Ut rutrum quam vel nisl ultricies semper.",
+      date: Date(),
       id: 4,
-      read: false
-    },
-    {
-      fromName: 'Andrea Cornerston',
-      subject: 'Last minute ask',
-      date: 'Yesterday',
-      id: 5,
-      read: false
-    },
-    {
-      fromName: 'Moe Chamont',
-      subject: 'Family Calendar - Version 1',
-      date: 'Last Week',
-      id: 6,
-      read: false
-    },
-    {
-      fromName: 'Kelly Richardson',
-      subject: 'Placeholder Headhots',
-      date: 'Last Week',
-      id: 7,
-      read: false
+      location: "Some Address",
+      bloodType: "B+"
     }
   ];
 
   constructor() { }
 
-  public getMessages(): Message[] {
-    return this.messages;
+  public getEvents(): Event[] {
+    return this.events;
   }
 
-  public getMessageById(id: number): Message {
-    return this.messages[id];
+  public getEventBy(id: number): Event {
+    return this.events[id];
   }
 }
