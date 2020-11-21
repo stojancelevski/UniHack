@@ -1,14 +1,14 @@
-button{
-  background-color: #bfbfbf;
-  color: white;
+.loginBtnRed{
+  background-color: #600706;
+  color: #bfbfbf;
   font-size: 20px;
-  padding: 14px 100px;
-  margin-right: 20px;
+  padding: 14px 80px;
   border-radius: 12px;
-  font-family: "Roboto";
-  font-size: 40px;
+  font-family: "Roboto", sans-serif;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
+
 
 #grad {
   background-image: linear-gradient(to top, #3f3f3f , #d6d6d6);

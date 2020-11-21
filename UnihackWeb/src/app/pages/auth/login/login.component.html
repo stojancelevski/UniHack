@@ -1,15 +1,25 @@
+<div class="image">
 <div class="titleDesignLogin">
-  Login
-</div>
 
+  <img src="../../../../assets/Images/logo.png" width="130" height="130">
+  Log In
+</div>
 
 <form [formGroup]="loginForm">
   <app-input [keyword]="'EMAIL'" [type]="'text'" [for]="'email'" formControlName="email"></app-input>
   <app-input [keyword]="'PASSWORD'" [type]="'password'" [for]="'email'" formControlName="password"></app-input>
 
+
+
   <div class="loginButtonsAlignment">
-    <app-button [keyword]="'LOGIN'" (click)="submitForm()"></app-button>
-    <app-button [keyword]="'REGISTER'" routerLink="/register"></app-button>
+    <app-button [keyword]="'LOG IN'" [buttonColor]="'loginBtnRed'" (click)="submitForm()"></app-button>
   </div>
 
+  <div class="registerBtnAlign">
+    <app-button [keyword]="'REGISTER'" [buttonColor]="'loginBtnRed'" routerLink="/register"></app-button>
+  </div>
+
+
 </form>
+</div>
+

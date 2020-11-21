@@ -1,24 +1,25 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { DialogOverviewExampleDialog, NavbarComponent } from './components/navbar/navbar.component';
-import { InputComponent } from './components/input/input.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
-import { TranslateComponent } from './components/translate/translate.component';
-import { ButtonComponent } from './components/button/button.component';
-import { RouterModule } from '@angular/router';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
-import { InputMaterialComponent } from './components/input-material/input-material.component';
-import { TextareaMaterialComponent } from './components/textarea-material/textarea-material.component';
-import { CardComponent } from './components/card/card.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { ReactiveFormsModule } from '@angular/forms';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {DialogOverviewExampleDialog, NavbarComponent} from './components/navbar/navbar.component';
+import {InputComponent} from './components/input/input.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
+import {TranslateComponent} from './components/translate/translate.component';
+import {ButtonComponent} from './components/button/button.component';
+import {RouterModule} from '@angular/router';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
+import {InputMaterialComponent} from './components/input-material/input-material.component';
+import {TextareaMaterialComponent} from './components/textarea-material/textarea-material.component';
+import {CardComponent} from './components/card/card.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -54,6 +55,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatNativeDateModule,
     MatCardModule,
     MatGridListModule,
+    MatButtonModule,
     ReactiveFormsModule
   ],
   exports: [

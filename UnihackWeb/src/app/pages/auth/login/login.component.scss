@@ -1,13 +1,25 @@
 .titleDesignLogin{
   font-family: Roboto, sans-serif;
   font-size: 105px;
-  color: #737373;
+  color: #600706;
   text-align: center;
-  padding-bottom: 2%;
+  padding: 3%;
 }
 
 .loginButtonsAlignment{
   text-align: center;
-  margin: 5%;
+  margin: 15px;
+
 }
 
+.registerBtnAlign{
+  text-align: center;
+  margin: 15px;
+
+}
+
+.image{
+  height:100%; background-size:cover; width:auto;
+  background-image:url(../../../../assets/Images/heartbeat.png);
+  background-position:80% 100%;
+}
