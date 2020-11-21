@@ -7,6 +7,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { TranslateComponent } from './components/translate/translate.component';
+import {ButtonComponent} from './components/button/button.component';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -18,6 +19,7 @@ export function createTranslateLoader(http: HttpClient) {
     NavbarComponent,
     InputComponent,
     TranslateComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
     NavbarComponent,
     InputComponent,
     TranslateModule,
-    TranslateComponent
+    TranslateComponent,
+    ButtonComponent
   ]
 })
 export class SharedModule {
