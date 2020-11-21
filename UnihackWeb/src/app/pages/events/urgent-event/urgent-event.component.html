@@ -1,0 +1,20 @@
+<form [formGroup]="eventForm" style="text-align: center">
+  <app-input-material [keyword]="'TITLE'" [type]="'text'" formControlName="title"></app-input-material>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label><app-translate [keyword]="'BLOODTYPE'"></app-translate></mat-label>
+    <mat-select  formControlName="bloodType">
+      <mat-option *ngFor="let value of bloodValues" [value]="value">
+        {{value.bloodType + value.rhValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <app-textarea-material [keyword]="'DETAILS'" [type]="'text'" formControlName="details"></app-textarea-material>
+  <br>
+
+  <ejs-datetimepicker formControlName="date" id='datetimepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datetimepicker>  <br>
+  <app-input-material [keyword]="'LOCATION'" [type]="'text'" formControlName="location"></app-input-material>
+  <br>
+
+  <app-button [keyword]="'SUBMIT'" (click)="submitForm()"></app-button>
+</form>

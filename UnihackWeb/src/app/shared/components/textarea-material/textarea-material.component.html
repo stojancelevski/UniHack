@@ -1,0 +1,6 @@
+<mat-form-field class="example-full-width">
+  <mat-label>
+    <app-translate [keyword]="keyword"></app-translate>
+  </mat-label>
+  <textarea matInput [placeholder]="keyword|translate" (change)="itemChange($event)"></textarea>
+</mat-form-field>
