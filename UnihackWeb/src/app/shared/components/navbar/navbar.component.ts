@@ -48,19 +48,25 @@ export class DialogOverviewExampleDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
               private fb: FormBuilder,
               public fireService: FirebaseService,
+              private router: Router,
               private authService: AuthService) {
   }
 
   create() {
-    this.fireService.createSupply(this.createSupplyForm.value).then(value => {
-      this.createSupplyToHospitalForm.patchValue({
-        hospitalKey: this.authService.loggedUser.uid,
-        supplyKey: value
+    if ( this.createSupplyForm.valid ) {
+      this.fireService.createSupply(this.createSupplyForm.value).then(value => {
+        this.createSupplyToHospitalForm.patchValue({
+          hospitalKey: this.authService.loggedUser.uid,
+          supplyKey: value
+        });
+        this.fireService.createSupplyToHospital(this.createSupplyToHospitalForm.value).then(() => {
+          this.router.navigateByUrl('/home');
+          this.dialogRef.close();
+        });
       });
-      this.fireService.createSupplyToHospital(this.createSupplyToHospitalForm.value).then(() => {
-        this.dialogRef.close();
-      });
-    });
+    } else {
+      console.log('Form not valid');
+    }
   }
 
 

@@ -58,21 +58,26 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm() {
-    this.hospitalCreateForm.patchValue({
-      address: this.createAddress()
-    });
-    this.authService.SignUp(this.hospitalForm.email.value, this.hospitalForm.password.value).then(userUid => {
+    if ( this.hospitalCreateForm.valid ) {
       this.hospitalCreateForm.patchValue({
-        uid: userUid
+        address: this.createAddress()
       });
-      this.hospitalCreateForm.removeControl('email');
-      this.hospitalCreateForm.removeControl('password');
-      this.fireService.createUser(this.hospitalCreateForm.value).then(value => {
-        this.router.navigateByUrl('/login').then(() => {
-          console.log(value);
+      this.authService.SignUp(this.hospitalForm.email.value, this.hospitalForm.password.value).then(userUid => {
+        this.hospitalCreateForm.patchValue({
+          uid: userUid
+        });
+        this.hospitalCreateForm.removeControl('email');
+        this.hospitalCreateForm.removeControl('password');
+        this.fireService.createUser(this.hospitalCreateForm.value).then(value => {
+          this.router.navigateByUrl('/login').then(() => {
+            console.log(value);
+          });
         });
       });
-    });
+    } else {
+      console.log('Form not valid');
+    }
+
   }
 
 }

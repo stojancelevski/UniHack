@@ -6,7 +6,6 @@ export interface Hospital {
   hospitalName: string;
   address: Location;
   email: string;
-  password: string;
   supplies: Supplies[];
   uid: string;
 }

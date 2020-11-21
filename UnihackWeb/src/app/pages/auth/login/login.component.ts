@@ -32,17 +32,21 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
-    this.authService.SignIn(this.form.email.value, this.form.password.value).then(value => {
-      this.getCurrentUser(value).then(hospital => {
-        this.authService.setUser(hospital);
-        window.localStorage.setItem('user', hospital.uid);
-        this.router.navigateByUrl('/home').then(() => {
-          console.log('success');
+    if ( this.loginForm.valid ) {
+      this.authService.SignIn(this.form.email.value, this.form.password.value).then(value => {
+        this.getCurrentUser(value).then(hospital => {
+          this.authService.setUser(hospital);
+          window.localStorage.setItem('user', hospital.uid);
+          this.router.navigateByUrl('/home').then(() => {
+            console.log('success');
+          });
         });
+      }).catch(error => {
+        console.log(error);
       });
-    }).catch(error => {
-      console.log(error);
-    });
+    } else {
+      console.log('Form not valid');
+    }
   }
 
   private getCurrentUser(uid: string): Promise<Hospital> {

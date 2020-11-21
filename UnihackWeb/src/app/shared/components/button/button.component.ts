@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input() keyword: string;
+  @Input() disabled: boolean;
 
   constructor() {
   }

@@ -1,24 +1,24 @@
-<div style="text-align: center" >
+<div style="text-align: center">
 
   <p class="titleDesignRegister">Register form</p>
 
 
-<form [formGroup]="hospitalCreateForm">
+  <form [formGroup]="hospitalCreateForm">
 
-  <app-input [keyword]="'HOSPITALNAME'" [type]="'text'" [for]="'email'" formControlName="hospitalName"></app-input>
-  <div [formGroup]="addressForm">
-    <app-input [keyword]="'STREET'" [type]="'text'" [for]="'city'" formControlName="street"></app-input>
-    <app-input [keyword]="'NUMBER'" [type]="'text'" [for]="'country'" formControlName="number"></app-input>
-    <app-input [keyword]="'ZIPCODE'" [type]="'number'" [for]="'zipCode'" formControlName="zipCode"></app-input>
-    <app-input [keyword]="'CITY'" [type]="'text'" [for]="'city'" formControlName="city"></app-input>
-    <app-input [keyword]="'COUNTRY'" [type]="'text'" [for]="'country'" formControlName="country"></app-input>
-  </div>
-  <app-input [keyword]="'EMAIL'" [type]="'text'" [for]="'email'" formControlName="email"></app-input>
-  <app-input [keyword]="'PASSWORD'" [type]="'password'" [for]="'email'" formControlName="password"></app-input>
+    <app-input [keyword]="'HOSPITALNAME'" [type]="'text'" [for]="'email'" formControlName="hospitalName"></app-input>
+    <div [formGroup]="addressForm">
+      <app-input [keyword]="'STREET'" [type]="'text'" [for]="'city'" formControlName="street"></app-input>
+      <app-input [keyword]="'NUMBER'" [type]="'text'" [for]="'country'" formControlName="number"></app-input>
+      <app-input [keyword]="'ZIPCODE'" [type]="'number'" [for]="'zipCode'" formControlName="zipCode"></app-input>
+      <app-input [keyword]="'CITY'" [type]="'text'" [for]="'city'" formControlName="city"></app-input>
+      <app-input [keyword]="'COUNTRY'" [type]="'text'" [for]="'country'" formControlName="country"></app-input>
+    </div>
+    <app-input [keyword]="'EMAIL'" [type]="'text'" [for]="'email'" formControlName="email"></app-input>
+    <app-input [keyword]="'PASSWORD'" [type]="'password'" [for]="'email'" formControlName="password"></app-input>
 
-<div style="text-align: center; padding-top: 2%">
-  <app-button class="submitButtonAlignment" [keyword]="'REGISTER'" (click)="submitForm()"></app-button>
-</div>
+    <div style="text-align: center; padding-top: 2%">
+      <app-button class="submitButtonAlignment" [keyword]="'REGISTER'" (click)="submitForm()"></app-button>
+    </div>
 
-</form>
+  </form>
 </div>
