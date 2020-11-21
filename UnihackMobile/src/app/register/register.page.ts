@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private db: DatabaseService
   ) { }
 
   ngOnInit() {
@@ -22,7 +24,13 @@ export class RegisterPage implements OnInit {
 
   async registerUser() {
     this.authService.signupUser(this.email, this.pass).then( (resp) => {
-      resp.user.ui
+
+    })
+  }
+
+  async loginUser() {
+    this.authService.loginUser(this.email, this.pass).then( (resp) => {
+      console.log(resp)
     })
   }
 }

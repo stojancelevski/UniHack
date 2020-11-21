@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Event } from '../shared/event';
+import { Event, BloodType } from '../shared/event';
 import { DatabaseService } from '../services/database.service';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-event-details',
@@ -18,8 +18,8 @@ export class EventDetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.event = null;
+    const key = this.activatedRoute.snapshot.paramMap.get('key');
+    this.db.getEventDetail(key).then((event) => {this.event = event} )
   }
 
   getBackButtonText() {
