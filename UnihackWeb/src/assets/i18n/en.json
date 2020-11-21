@@ -6,5 +6,8 @@
   "NUMBER" : "Number",
   "ZIPCODE" : "Zip Code",
   "CITY" : "City",
-  "COUNTRY" : "Country"
+  "COUNTRY" : "Country",
+  "LOGIN": "Login",
+  "LOGOUT": "Logout",
+  "REGISTER": "Register"
 }

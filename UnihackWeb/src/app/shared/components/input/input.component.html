@@ -1,6 +1,3 @@
 <div class="form-group">
-  <label [for]="for">
-    <app-translate [keyword]="keyword"></app-translate>
-  </label>
-  <input [type]="type" class="form-control" id="for" (change)="itemChange($event)">
+  <input [type]="type" class="form-control" id="for" (change)="itemChange($event)" [placeholder]="keyword | translate">
 </div>

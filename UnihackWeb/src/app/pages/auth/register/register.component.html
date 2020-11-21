@@ -15,5 +15,6 @@
   <app-input [keyword]="'EMAIL'" [type]="'text'" [for]="'email'" formControlName="email"></app-input>
   <app-input [keyword]="'PASSWORD'" [type]="'password'" [for]="'email'" formControlName="password"></app-input>
 
-  <button class="btn btn-primary" (click)="submitForm()">Submit</button>
+  <app-button [keyword]="'REGISTER'" (click)="submitForm()"></app-button>
+
 </form>
