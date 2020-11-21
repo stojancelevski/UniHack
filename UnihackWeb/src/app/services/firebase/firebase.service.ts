@@ -18,7 +18,7 @@ export class FirebaseService {
   }
 
   createUser(value): Promise<boolean> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.hospitalsRef.push(value);
       resolve(true);
     });
@@ -28,10 +28,10 @@ export class FirebaseService {
     return this.hospitalsRef;
   }
 
-  getHospitalById(key){
-    return new Promise((resolve, reject) => {
-      this.hospitalById.child(key).once('value', snapshot => {
-        resolve(snapshot.val());
+  getHospitalById(uid: string): Promise<any> {
+    return new Promise<any>((resolve) => {
+      this.fire.list('/hospitals', ref => ref.orderByChild('uid').equalTo(uid)).valueChanges().subscribe(value => {
+        resolve(value[0]);
       });
     });
   }
