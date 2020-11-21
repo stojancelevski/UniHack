@@ -1,5 +1,7 @@
 {
   "name": "UnihackMobile",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

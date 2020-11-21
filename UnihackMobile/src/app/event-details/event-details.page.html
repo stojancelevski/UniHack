@@ -8,21 +8,20 @@
 
 <ion-content [fullscreen]="true" *ngIf="event">
   <ion-item>
-    <ion-icon name="person-circle" color="primary"></ion-icon>
     <ion-label class="ion-text-wrap">
+      <ion-item style="height: 200px"></ion-item>
       <h2>
         {{ event.title }}
         <span class="date">
           <ion-note>{{ event.date }}</ion-note>
         </span>
       </h2>
-      <h3>To: <ion-note>Me</ion-note></h3>
     </ion-label>
   </ion-item>
 
   <div class="ion-padding">
     <p>
-      event.details
+      {{ event.details }}
     </p>
     <ion-button [routerLink]="['/register']">Register For Event</ion-button>
   </div>

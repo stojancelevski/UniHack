@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Event } from '../shared/event';
+import { Event, BloodType } from '../shared/event';
 import { DatabaseService } from '../services/database.service';
 import { Observable } from 'rxjs';
 

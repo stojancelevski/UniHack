@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Event } from '../shared/event';
+import { Event, BloodType } from '../shared/event';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +40,9 @@ export class DatabaseService {
     );
   }
 
-  get(uid: string): Promise<any> {
+  getEventDetail(key: string): Promise<any> {
     return new Promise<any>((resolve) => {
-      this.fire.list('/hospitals', ref => ref.orderByChild('uid').equalTo(uid)).valueChanges().subscribe(value => {
+      this.fire.list('/events', ref => ref.orderByKey().equalTo(key)).valueChanges().subscribe(value => {
         resolve(value[0]);
       });
     });
@@ -50,7 +50,7 @@ export class DatabaseService {
 
   getUserBy(uid: string): Promise<any> {
     return new Promise<any>((resolve) => {
-      this.fire.list('/hospitals', ref => ref.orderByChild('uid').equalTo(uid)).valueChanges().subscribe(value => {
+      this.fire.list('/users', ref => ref.orderByChild('uid').equalTo(uid)).valueChanges().subscribe(value => {
         resolve(value[0]);
       });
     });

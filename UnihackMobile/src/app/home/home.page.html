@@ -25,7 +25,7 @@
     </ion-slide>
   </ion-slides>
 
-  <!-- <ion-list>
-    <app-event *ngFor="let event of getEvents()" [event]="event"></app-event>
-  </ion-list> -->
+  <ion-list>
+    <app-event *ngFor="let event of events | async" [event]="event"></app-event>
+  </ion-list>
 </ion-content>
