@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { DataService, Event } from '../services/data.service';
+import { Event } from '../shared/event';
+import { DatabaseService } from '../services/database.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +9,13 @@ import { DataService, Event } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(private data: DataService) {}
+  events: Observable<Event[]>
 
-  refresh(ev) {
-    setTimeout(() => {
-      ev.detail.complete();
-    }, 3000);
+  constructor(private db: DatabaseService) {
   }
 
-  getEvents(): Event[] {
-    return this.data.getEvents();
+  ngOnInit() {
+    this.events = this.db.getEventsList();
+    console.log(this.events)
   }
-
 }

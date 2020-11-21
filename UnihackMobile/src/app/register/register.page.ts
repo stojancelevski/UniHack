@@ -22,7 +22,7 @@ export class RegisterPage implements OnInit {
 
   async registerUser() {
     this.authService.signupUser(this.email, this.pass).then( (resp) => {
-      resp.user.uid
+      resp.user.ui
     })
   }
 }

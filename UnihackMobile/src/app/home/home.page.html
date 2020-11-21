@@ -20,12 +20,12 @@
   </ion-header>
 
   <ion-slides pager="true">
-    <ion-slide *ngFor="let event of getEvents()">
+    <ion-slide *ngFor="let event of events | async">
       <app-event-slides [event]="event"></app-event-slides>
     </ion-slide>
   </ion-slides>
 
-  <ion-list>
+  <!-- <ion-list>
     <app-event *ngFor="let event of getEvents()" [event]="event"></app-event>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

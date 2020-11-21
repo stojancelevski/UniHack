@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService, Event } from '../services/data.service';
+import { Event } from '../shared/event';
+import { DatabaseService } from '../services/database.service';
+
 
 @Component({
   selector: 'app-event-details',
@@ -11,13 +13,13 @@ export class EventDetailsPage implements OnInit {
   public event: Event;
 
   constructor(
-    private data: DataService,
+    private db: DatabaseService,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.event = this.data.getEventBy(parseInt(id, 10));
+    this.event = null;
   }
 
   getBackButtonText() {
