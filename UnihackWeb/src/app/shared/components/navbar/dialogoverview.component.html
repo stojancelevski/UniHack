@@ -1,0 +1,7 @@
+<form [formGroup]="createSupplyForm" style="text-align: center">
+  <app-input-material [keyword]="'BLOODTYPE'" [type]="'text'" formControlName="bloodType"></app-input-material>
+  <app-input-material [keyword]="'RHVALUE'" [type]="'text'" formControlName="rhValue"></app-input-material>
+  <app-input-material [keyword]="'QUANTITY'" [type]="'number'" formControlName="quantity"></app-input-material>
+
+  <app-button [keyword]="'SUBMIT'" (click)="create()"></app-button>
+</form>

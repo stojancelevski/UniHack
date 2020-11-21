@@ -5,6 +5,8 @@ import { Hospital } from '../../models/Hospital';
 import { map } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Event } from '../../models/Event';
+import { SuppliesToHospital } from '../../models/SuppliesToHospital';
+import { Supplies } from '../../models/Supplies';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +20,23 @@ export class FirebaseService {
   eventsUrl = '/events';
   eventsById = null;
 
-  urgentEventsRef: AngularFireList<any> = null;
-  urgentEventsUrl = '/events';
-  urgentEventsId = null;
+  suppliesRef: AngularFireList<any> = null;
+  suppliesUrl = '/supplies';
+  suppliesId = null;
 
-  private uploadTask;
-  storageTask: any;
+  suppliesToHospitalRef: AngularFireList<any> = null;
+  suppliesToHospitalUrl = '/suppliesToHospital';
+  suppliesToHospitalId = null;
 
   constructor(private fire: AngularFireDatabase, private readonly storage: AngularFireStorage) {
     this.hospitalsRef = fire.list(this.hospitalUrl);
     this.hospitalById = fire.database.ref(this.hospitalUrl);
-    this.urgentEventsRef = fire.list(this.urgentEventsUrl);
-    this.urgentEventsId = fire.database.ref(this.urgentEventsUrl);
     this.eventsRef = fire.list(this.eventsUrl);
     this.eventsById = fire.database.ref(this.eventsUrl);
+    this.suppliesRef = fire.list(this.suppliesUrl);
+    this.suppliesId = fire.database.ref(this.suppliesUrl);
+    this.suppliesToHospitalId = fire.database.ref(this.suppliesToHospitalUrl);
+    this.suppliesToHospitalRef = fire.list(this.suppliesToHospitalUrl);
   }
 
   createUser(value): Promise<boolean> {
@@ -47,7 +52,7 @@ export class FirebaseService {
 
   getHospitalById(uid: string): Promise<any> {
     return new Promise<any>((resolve) => {
-      this.fire.list('/hospitals', ref => ref.orderByChild('uid').equalTo(uid)).valueChanges().subscribe(value => {
+      this.fire.list(this.hospitalUrl, ref => ref.orderByChild('uid').equalTo(uid)).valueChanges().subscribe(value => {
         resolve(value[0]);
       });
     });
@@ -82,9 +87,9 @@ export class FirebaseService {
     return this.eventsRef;
   }
 
-  getEventsById(uid: string): Promise<any> {
+  getEventsById(key: string): Promise<any> {
     return new Promise<any>((resolve) => {
-      this.fire.list('/events', ref => ref.orderByChild('key').equalTo(uid)).valueChanges().subscribe(value => {
+      this.fire.list('/events', ref => ref.orderByKey().equalTo(key)).valueChanges().subscribe(value => {
         resolve(value[0]);
       });
     });
@@ -108,27 +113,26 @@ export class FirebaseService {
     return this.eventsRef.remove(key);
   }
 
-  createUrgentEvent(value): Promise<boolean> {
+  createSupply(value): Promise<any> {
     return new Promise((resolve) => {
-      this.urgentEventsRef.push(value);
-      resolve(true);
+      resolve(this.suppliesRef.push(value).key);
     });
   }
 
-  getUrgentEvents() {
-    return this.urgentEventsRef;
+  getSupplies() {
+    return this.suppliesRef;
   }
 
-  getUrgentEventsById(uid: string): Promise<any> {
+  getSuppliesById(key: string): Promise<any> {
     return new Promise<any>((resolve) => {
-      this.fire.list('/urgentEvents', ref => ref.orderByChild('key').equalTo(uid)).valueChanges().subscribe(value => {
+      this.fire.list(this.suppliesUrl, ref => ref.orderByKey().equalTo(key)).valueChanges().subscribe(value => {
         resolve(value[0]);
       });
     });
   }
 
-  getUrgentEventsList(): Observable<Event[]> {
-    return this.getEvents().snapshotChanges().pipe(
+  getSuppliesList(): Observable<Supplies[]> {
+    return this.getSupplies().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({key: c.payload.key, ...c.payload.val()})
@@ -137,12 +141,48 @@ export class FirebaseService {
     );
   }
 
-  updateUrgentEvent(key: string, value: any) {
-    return this.urgentEventsRef.update(key, value);
+  updateSupply(key: string, value: any) {
+    return this.suppliesRef.update(key, value);
   }
 
-  deleteUrgentEvent(key: string): Promise<any> {
-    return this.urgentEventsRef.remove(key);
+  deleteSupply(key: string): Promise<any> {
+    return this.suppliesRef.remove(key);
   }
 
+  createSupplyToHospital(value): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.suppliesToHospitalRef.push(value);
+      resolve(true);
+    });
+  }
+
+  getSuppliesToHospital() {
+    return this.suppliesToHospitalRef;
+  }
+
+  getSupplyToHospitalById(uid: string): Promise<any> {
+    return new Promise<any>((resolve) => {
+      this.fire.list(this.suppliesToHospitalUrl, ref => ref.orderByChild('hospitalKey').equalTo(uid)).valueChanges().subscribe(value => {
+        resolve(value[0]);
+      });
+    });
+  }
+
+  getSuppliesToHospitalList(): Observable<SuppliesToHospital[]> {
+    return this.getSuppliesToHospital().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({key: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
+  updateSupplyToHospital(key: string, value: any) {
+    return this.suppliesToHospitalRef.update(key, value);
+  }
+
+  deleteSupplyToHospital(key: string): Promise<any> {
+    return this.suppliesToHospitalRef.remove(key);
+  }
 }

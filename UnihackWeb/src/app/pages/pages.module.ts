@@ -10,7 +10,8 @@ import { SharedModule } from '../shared/shared.module';
 import { NgxMatDateAdapter, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { MatSelectModule } from '@angular/material/select';
-import { FindADonorComponent } from './find-adonor/find-adonor.component';
+import { FindADonorComponent } from './find-a-donor/find-a-donor.component';
+import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
     NgxMatTimepickerModule,
     DateTimePickerModule,
     MatSelectModule,
+    MatTableModule,
   ],
   providers: [
     // @ts-ignore

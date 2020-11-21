@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FindADonorComponent } from './find-adonor.component';
+import { FindADonorComponent } from './find-a-donor.component';
 
 describe('FindADonorComponent', () => {
   let component: FindADonorComponent;

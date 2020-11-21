@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { DialogOverviewExampleDialog, NavbarComponent } from './components/navbar/navbar.component';
 import { InputComponent } from './components/input/input.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -18,6 +18,7 @@ import { TextareaMaterialComponent } from './components/textarea-material/textar
 import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -33,6 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
     InputMaterialComponent,
     TextareaMaterialComponent,
     CardComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatInputModule,
     MatNativeDateModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -69,7 +72,8 @@ export function createTranslateLoader(http: HttpClient) {
     TextareaMaterialComponent,
     MatCardModule,
     CardComponent,
-    MatGridListModule
+    MatGridListModule,
+    DialogOverviewExampleDialog
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

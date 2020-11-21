@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-find-adonor',
-  templateUrl: './find-adonor.component.html',
-  styleUrls: ['./find-adonor.component.scss']
+  templateUrl: './find-a-donor.component.html',
+  styleUrls: ['./find-a-donor.component.scss']
 })
 export class FindADonorComponent implements OnInit {
 
