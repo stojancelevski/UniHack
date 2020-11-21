@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event } from '../services/data.service';
+import { Event } from '../shared/event';
 
 @Component({
   selector: 'app-event-slides',
