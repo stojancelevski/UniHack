@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NgxMatDateAdapter, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { MatSelectModule } from '@angular/material/select';
+import { FindADonorComponent } from './find-adonor/find-adonor.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
     AboutComponent,
     SimpleEventComponent,
     UrgentEventComponent,
-    SuppliesComponent
+    SuppliesComponent,
+    FindADonorComponent
   ],
   imports: [
     RouterModule.forChild(routes),

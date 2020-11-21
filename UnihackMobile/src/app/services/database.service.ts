@@ -9,11 +9,11 @@ import { Event } from '../shared/event';
 })
 export class DatabaseService {
   eventsRef: AngularFireList<any> = null;
-  eventsURL = '/event';
+  eventsURL = '/events';
   eventByUid = null;
 
   userRef: AngularFireList<any> = null;
-  userURL = '/user';
+  userURL = '/users';
   userById = null;
 
   constructor(private fire: AngularFireDatabase) {
