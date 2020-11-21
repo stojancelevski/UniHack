@@ -1,0 +1,15 @@
+<form [formGroup]="hospitalCreateForm">
+
+  <app-input [keyword]="'HOSPITALNAME'" [type]="'text'" [for]="'email'" formControlName="hospitalName"></app-input>
+  <div [formGroup]="addressForm">
+    <app-input [keyword]="'STREET'" [type]="'text'" [for]="'city'" formControlName="street"></app-input>
+    <app-input [keyword]="'NUMBER'" [type]="'text'" [for]="'country'" formControlName="number"></app-input>
+    <app-input [keyword]="'ZIPCODE'" [type]="'number'" [for]="'zipCode'" formControlName="zipCode"></app-input>
+    <app-input [keyword]="'CITY'" [type]="'text'" [for]="'city'" formControlName="city"></app-input>
+    <app-input [keyword]="'COUNTRY'" [type]="'text'" [for]="'country'" formControlName="country"></app-input>
+  </div>
+  <app-input [keyword]="'EMAIL'" [type]="'text'" [for]="'email'" formControlName="email"></app-input>
+  <app-input [keyword]="'PASSWORD'" [type]="'password'" [for]="'email'" formControlName="password"></app-input>
+
+  <button class="btn btn-primary" (click)="submitForm()">Submit</button>
+</form>
