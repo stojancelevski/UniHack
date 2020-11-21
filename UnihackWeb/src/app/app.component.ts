@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     const routerLink = window.location.href.split('/')[3];
     this.uid = localStorage.getItem('user');
-    if ( routerLink === 'login' || routerLink === 'register' && this.uid ) {
+    if ( (routerLink === 'login' || routerLink === 'register') && this.uid !== null ) {
       this.router.navigateByUrl('/home');
     }
   }
