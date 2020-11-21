@@ -8,4 +8,5 @@ export interface Hospital {
   email: string;
   password: string;
   supplies: Supplies[];
+  uid: string;
 }

@@ -1,7 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { AppComponent } from './app.component';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -10,9 +10,9 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { SharedModule } from './shared/shared.module';
-import { TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PreloadService } from './services/preload/preload.service';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [
     AngularFireDatabase,
     AngularFireAuth,
+    {provide: APP_INITIALIZER, useFactory: preloadServiceFactory, deps: [PreloadService], multi: true}
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+export function preloadServiceFactory(service: PreloadService) {
+  return () => service.load();
 }

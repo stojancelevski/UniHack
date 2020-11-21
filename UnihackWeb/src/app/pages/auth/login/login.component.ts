@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Location } from '../../../models/Location';
 import { AuthService } from '../../../services/auth/auth.service';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { Hospital } from '../../../models/Hospital';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private fireService: FirebaseService) {
+  constructor(private fb: FormBuilder,
+              private authService: AuthService,
+              private fireService: FirebaseService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,17 +34,25 @@ export class LoginComponent implements OnInit {
   submitForm() {
     this.authService.SignIn(this.form.email.value, this.form.password.value).then(value => {
       this.getCurrentUser(value.user.uid).then(hospital => {
-        console.log(hospital);
+        this.authService.setUser(hospital);
+        window.localStorage.setItem('user', hospital.uid);
+        this.router.navigateByUrl('/home').then(() => {
+          console.log('success');
+        });
       });
+    }).catch(error => {
+      console.log(error);
     });
   }
 
-  private getCurrentUser(key: string): Promise<Hospital> {
+  private getCurrentUser(uid: string): Promise<Hospital> {
     return new Promise<Hospital>((resolve, reject) => {
-      this.fireService.getHospitalById(key).then(hospital => {
-        console.log(hospital);
+      this.fireService.getHospitalById(uid).then(hospital => {
         // @ts-ignore
         resolve(hospital);
+      }).catch(error => {
+        console.log(error);
+        reject(true);
       });
     });
   }
