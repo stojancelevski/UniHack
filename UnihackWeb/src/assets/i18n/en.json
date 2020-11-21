@@ -1,0 +1,13 @@
+{
+  "EMAIL": "E-mail",
+  "PASSWORD": "Password",
+  "HOSPITALNAME" : "Hospital Name",
+  "STREET" : "Street",
+  "NUMBER" : "Number",
+  "ZIPCODE" : "Zip Code",
+  "CITY" : "City",
+  "COUNTRY" : "Country",
+  "LOGIN": "Login",
+  "LOGOUT": "Logout",
+  "REGISTER": "Register"
+}

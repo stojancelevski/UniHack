@@ -1,0 +1,8 @@
+<form [formGroup]="loginForm">
+  <app-input [keyword]="'EMAIL'" [type]="'text'" [for]="'email'" formControlName="email"></app-input>
+  <app-input [keyword]="'PASSWORD'" [type]="'password'" [for]="'email'" formControlName="password"></app-input>
+
+  <app-button [keyword]="'LOGIN'" (click)="submitForm()"></app-button>
+  <app-button [keyword]="'REGISTER'" routerLink="/register"></app-button>
+
+</form>
