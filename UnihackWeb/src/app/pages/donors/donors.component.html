@@ -1,0 +1,48 @@
+<mat-grid-list cols="2" rowHeight="2:0.5">
+  <mat-grid-tile>
+    <form [formGroup]="searchDonors" style="width: 100%">
+      <app-input [keyword]="'Blood Type'" [type]="'text'" [for]="'email'" formControlName="bloodType"></app-input>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <ng-container *ngIf="!clicked">
+      <app-button [keyword]="'SUBMIT'" (click)="getDonorByBloodType()"></app-button>
+    </ng-container>
+    <ng-container *ngIf="clicked">
+      <app-button [keyword]="'CLEAR'" (click)="clear()"></app-button>
+    </ng-container>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="3" rowHeight="3:1.5">
+  <ng-container *ngIf="!clicked">
+    <div *ngFor="let user of users">
+      <mat-grid-tile>
+        <mat-card class="mat-elevation-z5" style="border: 3px solid #600706; border-radius: 25px; width: 100%">
+          <mat-card-title>Name: {{user.name}}</mat-card-title>
+          <mat-card-title>Blood Type: {{user.bloodType}}</mat-card-title>
+          <mat-card-subtitle>Address: {{user.address}}</mat-card-subtitle>
+          <mat-card-subtitle>Phone Number: {{user.phoneNumber}}</mat-card-subtitle>
+          <mat-card-subtitle>Last Donation: {{user.lastDonation}} </mat-card-subtitle>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="clicked">
+    <div *ngFor="let user of usersByBlood">
+      <mat-grid-tile>
+        <mat-card class="mat-elevation-z5" style="border: 3px solid #600706; border-radius: 25px; width: 100%">
+          <mat-card-title>{{user.name}}</mat-card-title>
+          <mat-card-subtitle>{{user.address}}</mat-card-subtitle>
+          <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile>{{user.date}}</mat-grid-tile>
+            <mat-grid-tile>{{user.bloodType}}</mat-grid-tile>
+          </mat-grid-list>
+          <mat-card-footer>
+            {{user.lastDonation}}
+          </mat-card-footer>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+  </ng-container>
+</mat-grid-list>
