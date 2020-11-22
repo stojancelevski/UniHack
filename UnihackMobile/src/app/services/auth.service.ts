@@ -11,11 +11,11 @@ export class AuthService {
   loginUser(
     email: string,
     password: string
-  ): Promise<any> {
+  ) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  signupUser(email: string, password: string): Promise<any> {
+  signupUser(email: string, password: string) {
     return this.auth
       .createUserWithEmailAndPassword(email, password);
   }
@@ -24,7 +24,7 @@ export class AuthService {
     return this.auth.sendPasswordResetEmail(email);
   }
 
-  logoutUser():Promise<void> {
+  logoutUser(): Promise<void> {
     return this.auth.signOut();
   }
 }

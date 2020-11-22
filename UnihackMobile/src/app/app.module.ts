@@ -17,6 +17,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 // environment
 import { environment } from '../environments/environment';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +26,11 @@ import { environment } from '../environments/environment';
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireAuthModule,
       AngularFireDatabaseModule,
-      AngularFireStorageModule],
+      AngularFireStorageModule,
+      ReactiveFormsModule
+    ],
   providers: [
+    FormBuilder,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

@@ -19,6 +19,8 @@ export class DatabaseService {
   constructor(private fire: AngularFireDatabase) {
     this.eventsRef = fire.list(this.eventsURL);
     this.eventByUid = fire.database.ref(this.eventsURL);
+    this.userRef = fire.list(this.userURL);
+    this.userById = fire.database.ref(this.userURL);
   }
 
   createUser(value): Promise<boolean> {

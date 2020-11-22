@@ -16,10 +16,38 @@
     <ion-label primary floating>Password:</ion-label>
     <ion-input [(ngModel)]="pass"></ion-input>
   </ion-item>
-  <ion-button (click)="loginUser()">
-    Login
-  </ion-button>
-  <ion-button (click)="registerUser()">
+  <div *ngIf="createUser">
+    <ion-item>
+      <ion-label primary floating>Name:</ion-label>
+      <ion-input [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label primary floating>Address:</ion-label>
+      <ion-input [(ngModel)]="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label primary floating>Phone:</ion-label>
+      <ion-input [(ngModel)]="phoneNumber"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label primary floating>Blood Type:</ion-label>
+      <ion-input [(ngModel)]="bloodType"></ion-input>
+    </ion-item>
+  </div>
+
+  <div *ngIf="!createUser">
+    <ion-item>
+      <ion-button (click)="loginUser()">Login</ion-button>
+    </ion-item>
+    <ion-item>
+        <ion-router-link (click)="getExtraInfo()">Create Account</ion-router-link>
+    </ion-item>
+  </div>
+  <ion-item *ngIf="createUser">
+    <ion-button (click)="registerUser()">Register</ion-button>
+  </ion-item>
+
+  <!-- <ion-button (click)="registerUser()">
     Register
-  </ion-button>
+  </ion-button> -->
 </ion-content>
