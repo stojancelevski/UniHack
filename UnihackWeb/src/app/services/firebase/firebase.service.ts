@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Observable } from 'rxjs';
-import { Hospital } from '../../models/Hospital';
-import { map } from 'rxjs/operators';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { Event } from '../../models/Event';
-import { SuppliesToHospital } from '../../models/SuppliesToHospital';
-import { Supplies } from '../../models/Supplies';
+import {Injectable} from '@angular/core';
+import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import {Observable} from 'rxjs';
+import {Hospital} from '../../models/Hospital';
+import {map} from 'rxjs/operators';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {Event} from '../../models/Event';
+import {SuppliesToHospital} from '../../models/SuppliesToHospital';
+import {Supplies} from '../../models/Supplies';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,10 @@ export class FirebaseService {
   suppliesToHospitalUrl = '/suppliesToHospital';
   suppliesToHospitalId = null;
 
+  usersRef: AngularFireList<any> = null;
+  usersUrl = '/users';
+  usersId = null;
+
   constructor(private fire: AngularFireDatabase, private readonly storage: AngularFireStorage) {
     this.hospitalsRef = fire.list(this.hospitalUrl);
     this.hospitalById = fire.database.ref(this.hospitalUrl);
@@ -37,6 +41,8 @@ export class FirebaseService {
     this.suppliesId = fire.database.ref(this.suppliesUrl);
     this.suppliesToHospitalId = fire.database.ref(this.suppliesToHospitalUrl);
     this.suppliesToHospitalRef = fire.list(this.suppliesToHospitalUrl);
+    this.usersRef = fire.list(this.usersUrl);
+    this.usersId = fire.database.ref(this.usersUrl);
   }
 
   createUser(value): Promise<boolean> {
@@ -56,6 +62,24 @@ export class FirebaseService {
         resolve(value[0]);
       });
     });
+  }
+
+  getDonorByBloodType(uid: string): Promise<any> {
+    return new Promise<any>((resolve) => {
+      this.fire.list(this.usersUrl, ref => ref.orderByChild('bloodType').equalTo(uid)).valueChanges().subscribe(value => {
+        resolve(value);
+      });
+    });
+  }
+
+  getUsersList(): Observable<Hospital[]> {
+    return this.getUsers().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({key: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
   }
 
   getHospitalsList(): Observable<Hospital[]> {
@@ -86,6 +110,11 @@ export class FirebaseService {
   getEvents() {
     return this.eventsRef;
   }
+
+  getUsers() {
+    return this.usersRef;
+  }
+
 
   getEventsById(key: string): Promise<any> {
     return new Promise<any>((resolve) => {
@@ -185,4 +214,6 @@ export class FirebaseService {
   deleteSupplyToHospital(key: string): Promise<any> {
     return this.suppliesToHospitalRef.remove(key);
   }
+
+
 }

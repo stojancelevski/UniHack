@@ -14,6 +14,7 @@ import { FindADonorComponent } from './find-a-donor/find-a-donor.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { DonorsComponent } from './donors/donors.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'simple-event', component: SimpleEventComponent},
   {path: 'urgent-event', component: UrgentEventComponent},
   {path: 'supplies', component: SuppliesComponent},
+  {path: 'donors', component: DonorsComponent},
 ];
 
 @NgModule({
@@ -29,7 +31,8 @@ const routes: Routes = [
     SimpleEventComponent,
     UrgentEventComponent,
     SuppliesComponent,
-    FindADonorComponent
+    FindADonorComponent,
+    DonorsComponent
   ],
   imports: [
     RouterModule.forChild(routes),
