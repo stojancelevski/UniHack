@@ -18,23 +18,30 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 // environment
 import { environment } from '../environments/environment';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig),
-      AngularFireAuthModule,
-      AngularFireDatabaseModule,
-      AngularFireStorageModule,
-      ReactiveFormsModule
+    declarations: [AppComponent, InputComponent],
+    entryComponents: [],
+    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
+        AngularFireDatabaseModule,
+        AngularFireStorageModule,
+        ReactiveFormsModule,
+        IonicStorageModule.forRoot()
     ],
-  providers: [
-    FormBuilder,
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
+    providers: [
+        FormBuilder,
+        StatusBar,
+        SplashScreen,
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    ],
+    exports: [
+        InputComponent
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
