@@ -2,7 +2,7 @@
 <ion-card style="width: 100%">
   <ion-label *ngIf="event" [routerLink]="'/event/' + event.key" [detail]="false">
     <ion-card style="height: 100px">
-      <here-map apiKey="Lv9U1GeDvugD-1LmvpVJgyGiXXnWdpZeyGMwa45vuoM" lat="37.7397" lng="-121.4252"></here-map>
+      <here-map apiKey="ze0i8Ae9D4SoN_sIKabzvfhO10uwH553U63bNrb9LVQ" lat="{{event.lat}}" lng="{{event.lon}}"></here-map>
     </ion-card>
     <ion-item >{{ event.title }}</ion-item>
     {{ event.date }}

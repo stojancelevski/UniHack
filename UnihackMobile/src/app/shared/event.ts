@@ -3,7 +3,8 @@ export interface Event {
   details: string;
   date: string;
   id: string;
-  location: string;
+  lon: string;
+  lat: string;
   bloodType: BloodType;
 }
 

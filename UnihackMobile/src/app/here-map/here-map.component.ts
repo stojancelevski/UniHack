@@ -23,7 +23,6 @@ export class HereMapComponent implements OnInit {
 
     private platform: any;
     private map: any;
-    private router: any;
 
     public constructor() { }
 
@@ -31,7 +30,6 @@ export class HereMapComponent implements OnInit {
         this.platform = new H.service.Platform({
             "apiKey": this.apiKey
         });
-        this.router = this.platform.getRoutingService();
     }
 
     public ngAfterViewInit() {
@@ -45,9 +43,7 @@ export class HereMapComponent implements OnInit {
                     center: { lat: this.lat, lng: this.lng }
                 }
             );
-        }, 1000);
+        }, 100);
     }
-
-    public isoline() { }
 
 }

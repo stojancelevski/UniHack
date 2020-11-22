@@ -19,10 +19,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
-import { InputComponent } from './components/input/input.component';
 
 @NgModule({
-    declarations: [AppComponent, InputComponent],
+    declarations: [AppComponent],
     entryComponents: [],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -37,9 +36,6 @@ import { InputComponent } from './components/input/input.component';
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
-    ],
-    exports: [
-        InputComponent
     ],
     bootstrap: [AppComponent]
 })

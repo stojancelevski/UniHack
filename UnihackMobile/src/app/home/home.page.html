@@ -20,7 +20,7 @@
   </ion-header>
 
   <ion-slides pager="true">
-    <ion-slide *ngFor="let event of events | async">
+    <ion-slide *ngFor="let event of events | async" style="width: 100%">
       <app-event-slides [event]="event"></app-event-slides>
     </ion-slide>
   </ion-slides>

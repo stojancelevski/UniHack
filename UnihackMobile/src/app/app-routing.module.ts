@@ -18,11 +18,7 @@ const routes: Routes = [
   {
     path: 'register/:id',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'register-event',
-    loadChildren: () => import('./register-event/register-event.module').then( m => m.RegisterEventPageModule)
-  },
+  }
 
 ];
 
