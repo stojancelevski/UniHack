@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Event, BloodType } from '../shared/event';
 
 @Injectable({
@@ -40,6 +40,18 @@ export class DatabaseService {
         changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
       )
     );
+  }
+
+  public getNonUrgentEventsList(): Observable<Event[]> {
+    return this.getEventsList().pipe(
+      map(events => events.filter(event => event.bloodType == null ))
+    )
+  }
+
+  public getUrgentEventsList(): Observable<Event[]> {
+    return this.getEventsList().pipe(
+      map(events => events.filter(event => event.bloodType != null ))
+    )
   }
 
   getEventDetail(key: string): Promise<any> {

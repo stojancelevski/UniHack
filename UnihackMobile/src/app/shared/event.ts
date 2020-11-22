@@ -9,5 +9,5 @@ export interface Event {
 
 export interface BloodType {
   bloodType: string;
-  rhValue: string
+  rhValue: string;
 }

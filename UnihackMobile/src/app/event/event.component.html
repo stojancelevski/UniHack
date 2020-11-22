@@ -1,6 +1,6 @@
-<ion-item *ngIf="event">
-  <ion-card *ngIf="event.paymentType"  [routerLink]="'/event/' + event.key" [detail]="false" class="ion-text-wrap" style="background: #600706;">
+<ion-item>
+  <ion-card *ngIf="event"  [routerLink]="'/event/' + event.key" [detail]="false" class="ion-text-wrap" style="background: #600706; width: 100%">
     <p>{{event.title}}</p>
-    <p>{{event.bloodType.bloodType + evnet.bloodType.rhValue}}
+    <p>{{event.bloodType.bloodType}} {{evnet.bloodType.rhValue}}</p>
   </ion-card>
 </ion-item>

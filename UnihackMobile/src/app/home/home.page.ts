@@ -10,12 +10,14 @@ import { Observable } from 'rxjs';
 })
 export class HomePage {
   events: Observable<Event[]>
+  urgentEvents: Observable<Event[]>
 
   constructor(private db: DatabaseService) {
   }
 
   ngOnInit() {
-    this.events = this.db.getEventsList();
+    this.events = this.db.getNonUrgentEventsList();
+    this.urgentEvents = this.db.getUrgentEventsList();
     console.log(this.events)
   }
 }
