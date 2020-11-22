@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SnackbarService } from '../../../services/snackbar/snackbar.service';
+import { SimpleEventComponent } from '../../../pages/events/simple-event/simple-event.component';
+import { UrgentEventComponent } from '../../../pages/events/urgent-event/urgent-event.component';
 
 @Component({
   selector: 'app-navbar',
@@ -25,10 +28,21 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  openDialogOne(): void {
+    this.dialog.open(DialogOverviewExampleDialog, {
       width: '300px',
+    });
+  }
 
+  openDialogTwo(): void {
+    this.dialog.open(SimpleEventComponent, {
+      width: '500px',
+    });
+  }
+
+  openDialogThree(): void {
+    this.dialog.open(UrgentEventComponent, {
+      width: '500px',
     });
   }
 
@@ -48,6 +62,7 @@ export class DialogOverviewExampleDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
               private fb: FormBuilder,
               public fireService: FirebaseService,
+              private snackBar: SnackbarService,
               private router: Router,
               private authService: AuthService) {
   }
@@ -61,11 +76,16 @@ export class DialogOverviewExampleDialog implements OnInit {
         });
         this.fireService.createSupplyToHospital(this.createSupplyToHospitalForm.value).then(() => {
           this.router.navigateByUrl('/home');
+          this.snackBar.openSnackBar('Succesfully added Supply', 'Success');
           this.dialogRef.close();
+        }).catch(() => {
+          this.snackBar.openSnackBar('Failed to Create', 'Error');
         });
+      }).catch(() => {
+        this.snackBar.openSnackBar('Failed to Create', 'Error');
       });
     } else {
-      console.log('Form not valid');
+      this.snackBar.openSnackBar('Form not valid', 'Error');
     }
   }
 

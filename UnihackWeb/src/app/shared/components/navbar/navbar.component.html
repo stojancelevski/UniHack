@@ -21,11 +21,11 @@
           Action
         </a>
         <div class="dropdown-menu bg" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item white" (click)="openDialog()">Add Supply</a>
+          <a class="dropdown-item white" (click)="openDialogOne()">Add Supply</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item white" routerLink="simple-event">Create Event</a>
+          <a class="dropdown-item white" (click)="openDialogTwo()">Create Event</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item white" routerLink="urgent-event">Create Urgent Event</a>
+          <a class="dropdown-item white" (click)="openDialogThree()">Create Urgent Event</a>
 
         </div>
       </li>

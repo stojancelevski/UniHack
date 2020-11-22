@@ -1,12 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .titleDesignRegister{
-   font-family: "Roboto Thin", sans-serif;
-   font-size: 105px;
-   color: #737373;
-  padding-bottom: 2%;
+  font-family: Roboto, sans-serif;
+  font-size: 80px;
+  color: #600706;
+  text-align: center;
+  padding: 3%;
  }
 
-.submitButtonAlignment{
-  padding-top: 10%;
+.image{
+  height:100%;
+  background-size:cover;
+  width:auto;
+  background-image:url(../../../../assets/Images/heartbeat.png);
+  background-position: 80% 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.loginButtonsAlignment{
+  text-align: center;
+  margin: 15px;
+}
+
+.registerBtnAlign{
+  text-align: center;
+  margin: 15px;
 }

@@ -4,6 +4,8 @@ import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { BloodValues } from '../../../models/BloodValues';
+import { MatDialogRef } from '@angular/material/dialog';
+import { SnackbarService } from '../../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-urgent-event',
@@ -17,7 +19,12 @@ export class UrgentEventComponent implements OnInit {
   eventForm: FormGroup;
   bloodValues: BloodValues[] = new Array(0);
 
-  constructor(private fb: FormBuilder, private datePipe: DatePipe, private router: Router, private fireService: FirebaseService) {
+  constructor(private fb: FormBuilder,
+              private datePipe: DatePipe,
+              private router: Router,
+              public dialogRef: MatDialogRef<UrgentEventComponent>,
+              private snackBar: SnackbarService,
+              private fireService: FirebaseService) {
   }
 
   ngOnInit(): void {
@@ -44,13 +51,20 @@ export class UrgentEventComponent implements OnInit {
   }
 
   submitForm() {
-    this.eventForm.patchValue({
-      date: this.datePipe.transform(this.form.date.value, 'medium')
-    });
-    this.fireService.createEvent(this.eventForm.value).then(value => {
-      this.router.navigateByUrl('/home').then(() => {
-        console.log('success');
+    if ( this.eventForm.valid ) {
+      this.eventForm.patchValue({
+        date: this.datePipe.transform(this.form.date.value, 'medium')
       });
-    });
+      this.fireService.createEvent(this.eventForm.value).then(() => {
+        this.router.navigateByUrl('/home').then(() => {
+          this.snackBar.openSnackBar('Successfully Created', 'Success');
+          this.dialogRef.close();
+        });
+      }).catch(() => {
+        this.snackBar.openSnackBar('Failed to create', 'Error');
+      });
+    } else {
+      this.snackBar.openSnackBar('Form not valid', 'Error');
+    }
   }
 }

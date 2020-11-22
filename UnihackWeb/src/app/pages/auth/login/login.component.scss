@@ -15,11 +15,12 @@
 .registerBtnAlign{
   text-align: center;
   margin: 15px;
-
 }
 
 .image{
   height:100%; background-size:cover; width:auto;
   background-image:url(../../../../assets/Images/heartbeat.png);
   background-position:80% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

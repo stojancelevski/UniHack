@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PreloadService } from './services/preload/preload.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
     AngularFireDatabase,

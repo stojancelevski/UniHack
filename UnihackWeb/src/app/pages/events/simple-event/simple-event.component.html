@@ -1,10 +1,12 @@
 <form [formGroup]="eventForm" style="text-align: center">
-  <app-input-material [keyword]="'TITLE'" [type]="'text'" formControlName="title"></app-input-material>
+  <app-input-material  [keyword]="'TITLE'" [type]="'text'" formControlName="title"></app-input-material>
   <br>
   <app-textarea-material [keyword]="'DETAILS'" [type]="'text'" formControlName="details"></app-textarea-material>
   <br>
 
-  <ejs-datetimepicker formControlName="date" id='datetimepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datetimepicker>  <br>
+  <ejs-datetimepicker formControlName="date" id='datetimepicker' placeholder='Select a date' [value]='dateValue'
+                      [min]='minDate' [max]='maxDate'></ejs-datetimepicker>
+  <br>
   <app-input-material [keyword]="'LOCATION'" [type]="'text'" formControlName="location"></app-input-material>
   <br>
 

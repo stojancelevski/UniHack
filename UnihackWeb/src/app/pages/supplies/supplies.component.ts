@@ -4,6 +4,7 @@ import { Supplies } from '../../models/Supplies';
 import { SuppliesToHospital } from '../../models/SuppliesToHospital';
 import { AuthService } from '../../services/auth/auth.service';
 import { rejects } from 'assert';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-supplies',
@@ -13,10 +14,10 @@ import { rejects } from 'assert';
 export class SuppliesComponent implements OnInit {
   supplies: Supplies[];
   suppliesToHospital: SuppliesToHospital[];
-  displayedColumns: string[] = ['bloodType', 'rhValue', 'quantity'];
+  displayedColumns: string[] = ['increase', 'bloodType', 'rhValue', 'quantity', 'decrease'];
   dataSource: Supplies[] = new Array(0);
 
-  constructor(private fireService: FirebaseService, private authService: AuthService) {
+  constructor(private fireService: FirebaseService, private authService: AuthService, private snackBar: SnackbarService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class SuppliesComponent implements OnInit {
       const supplies = new Array(0);
       sth.forEach(c => {
         this.fireService.getSuppliesById(c.supplyKey).then(supply => {
+          supply.key = c.supplyKey;
           supplies.push(supply);
         });
       });
@@ -40,11 +42,23 @@ export class SuppliesComponent implements OnInit {
     });
   }
 
-  edit() {
+  increase(key, quantity) {
+    // tslint:disable-next-line:radix
+    this.fireService.updateSupply(key, {quantity: parseInt(quantity) + 1}).then(() => {
+      window.location.reload();
 
+    });
   }
 
-  delete() {
+  decrease(key, quantity) {
+    if ( quantity > 0 ) {
+      // tslint:disable-next-line:radix
+      this.fireService.updateSupply(key, {quantity: parseInt(quantity) - 1}).then(() => {
+        window.location.reload();
+      });
+    } else {
+      this.snackBar.openSnackBar('Cannot decrease Value', 'Error');
+    }
 
   }
 }

@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { Hospital } from '../../../models/Hospital';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
+              private snackBar: SnackbarService,
               private fireService: FirebaseService,
               private router: Router) {
   }
@@ -38,14 +40,17 @@ export class LoginComponent implements OnInit {
           this.authService.setUser(hospital);
           window.localStorage.setItem('user', hospital.uid);
           this.router.navigateByUrl('/home').then(() => {
-            console.log('success');
+            this.snackBar.openSnackBar('Success Log In', 'Success');
           });
+        }).catch(() => {
+          this.snackBar.openSnackBar('Problems getting user', 'Error');
         });
       }).catch(error => {
+        this.snackBar.openSnackBar('Email or password is invalid, please try again', 'Error');
         console.log(error);
       });
     } else {
-      console.log('Form not valid');
+      this.snackBar.openSnackBar('Form not valid', 'Error');
     }
   }
 

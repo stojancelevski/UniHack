@@ -13,6 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
+
 export class InputMaterialComponent implements ControlValueAccessor {
   // tslint:disable-next-line:variable-name
   public _value: string;
@@ -31,7 +32,7 @@ export class InputMaterialComponent implements ControlValueAccessor {
 
 
   registerOnChange(fn: any): void {
-    this.onChange =fn;
+    this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
@@ -46,7 +47,7 @@ export class InputMaterialComponent implements ControlValueAccessor {
     this._value = obj;
   }
 
-  itemChange($event){
+  itemChange($event) {
     this.onTouch();
     this.onChange($event.currentTarget.value);
   }

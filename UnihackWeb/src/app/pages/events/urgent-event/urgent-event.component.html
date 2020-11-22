@@ -1,14 +1,15 @@
 <form [formGroup]="eventForm" style="text-align: center">
   <app-input-material [keyword]="'TITLE'" [type]="'text'" formControlName="title"></app-input-material>
   <br>
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label><app-translate [keyword]="'BLOODTYPE'"></app-translate></mat-label>
     <mat-select  formControlName="bloodType">
       <mat-option *ngFor="let value of bloodValues" [value]="value">
-        {{value.bloodType + value.rhValue}}
+        {{value.bloodType}} {{value.rhValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <br>
   <app-textarea-material [keyword]="'DETAILS'" [type]="'text'" formControlName="details"></app-textarea-material>
   <br>
 

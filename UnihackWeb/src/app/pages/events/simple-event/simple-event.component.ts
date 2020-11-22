@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
+import { SnackbarService } from '../../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-simple-event',
@@ -15,7 +17,12 @@ export class SimpleEventComponent implements OnInit {
   public dateValue: Date = new Date('05/16/2017 5:00 AM');
   eventForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private datePipe: DatePipe, private router: Router, private fireService: FirebaseService) {
+  constructor(private fb: FormBuilder,
+              private datePipe: DatePipe,
+              private router: Router,
+              private snackBar: SnackbarService,
+              public dialogRef: MatDialogRef<SimpleEventComponent>,
+              private fireService: FirebaseService) {
   }
 
   ngOnInit(): void {
@@ -32,14 +39,21 @@ export class SimpleEventComponent implements OnInit {
   }
 
   submitForm() {
-    this.eventForm.patchValue({
-      date: this.datePipe.transform(this.form.date.value, 'medium')
-    });
-    this.fireService.createEvent(this.eventForm.value).then(value => {
-      this.router.navigateByUrl('/home').then(() => {
-        console.log('success');
+    if ( this.eventForm.valid ) {
+      this.eventForm.patchValue({
+        date: this.datePipe.transform(this.form.date.value, 'medium')
       });
-    });
+      this.fireService.createEvent(this.eventForm.value).then(value => {
+        this.router.navigateByUrl('/home').then(() => {
+          this.snackBar.openSnackBar('Successfully Created', 'Success');
+          this.dialogRef.close();
+        });
+      }).catch(() => {
+        this.snackBar.openSnackBar('Failed to Create', 'Error');
+      });
+    } else {
+      this.snackBar.openSnackBar('Form not valid', 'Error');
+    }
   }
 
 }

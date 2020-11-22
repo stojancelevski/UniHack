@@ -12,6 +12,8 @@ import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { MatSelectModule } from '@angular/material/select';
 import { FindADonorComponent } from './find-a-donor/find-a-donor.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -37,6 +39,8 @@ const routes: Routes = [
     DateTimePickerModule,
     MatSelectModule,
     MatTableModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [
     // @ts-ignore
